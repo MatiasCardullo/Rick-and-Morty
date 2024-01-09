@@ -1,9 +1,9 @@
-//import React from 'react'
+import React from 'react'
 import { gql, useQuery } from '@apollo/client'
 import Character from './Character'
 
 const Characters = () => {
-  
+
     const charactersQuery = gql`
         {
             characters {
@@ -20,6 +20,7 @@ const Characters = () => {
                       id
                     }
                     image
+                    status
                 }
             }   
         }
@@ -27,16 +28,19 @@ const Characters = () => {
     const { loading, error, data } = useQuery(charactersQuery)
 
     return (
-    <section className='grid-character'>
-        { loading && (<p>Cargando...</p>) }
-        { error && (<p>Error: {error.message}</p>) }
-        { data &&
-            data.characters.results.map(ch => (
-                <Character key={ch.id} character={ch} />
-            ))
-            
-        }
-    </section>
-  )
+        <>
+
+            {loading && (<p>Cargando...</p>)}
+            {error && (<p>Error: {error.message}</p>)}
+            <section className='grid grid-cols-3'>
+                {data &&
+                    data.characters.results.map(ch => (
+                        <Character key={ch.id} character={ch} />
+                    ))
+
+                }
+            </section>
+        </>
+    )
 }
 export default Characters
