@@ -5,11 +5,15 @@ import SearchBar from './SearchBar';
 
 import { BsArrowLeftShort } from "react-icons/bs";
 
-const SideBar = ({setPage,setName, setStatus,setGender }) => {
+const SideBar = ({setPage,setName, setStatus,setSpecie,setGender }) => {
   const [open, setOpen] = useState(true)
   
   const handleStatus=(e)=>{
     setStatus(e.target.value)
+    setPage(1)
+  }
+  const handleSpecie=(e)=>{
+    setSpecie(e.target.value)
     setPage(1)
   }
   const handleGender=(e)=>{
@@ -46,6 +50,31 @@ const SideBar = ({setPage,setName, setStatus,setGender }) => {
             <input type="radio" name='status' id='dead' value='dead' onChange={handleStatus}/>
             <label htmlFor="dead">Dead</label>
             <input type="radio" name='status' id='unknownStatus' value='unknown' onChange={handleStatus}/>
+            <label htmlFor="unknown">Unknown</label>
+          </form>
+          <li className='p-2 text-2xl text-white'>Show Specie:</li>
+          <form className='grid grid-cols-2  text-white'>
+            <input type="radio" name='specie' id='allSpecies' value='' onChange={handleSpecie}/>
+            <label htmlFor="all">All</label>
+            <input type="radio" name='specie' id='human' value='human' onChange={handleSpecie}/>
+            <label htmlFor="human">Human</label>
+            <input type="radio" name='specie' id='humanoid' value='humanoid' onChange={handleSpecie}/>
+            <label htmlFor="humanoid">Humanoid</label>
+            <input type="radio" name='specie' id='animal' value='animal' onChange={handleSpecie}/>
+            <label htmlFor="animal">Animal</label>
+            <input type="radio" name='specie' id='alien' value='alien' onChange={handleSpecie}/>
+            <label htmlFor="alien">Alien</label>
+            <input type="radio" name='specie' id='poopybutthole' value='poopybutthole' onChange={handleSpecie}/>
+            <label htmlFor="poopybutthole">Poopybutthole</label>
+            <input type="radio" name='specie' id='mythologicalCreature' value='mythological creature' onChange={handleSpecie}/>
+            <label htmlFor="mythologicalCreature">Mythological Creature</label>
+            <input type="radio" name='specie' id='robot' value='robot' onChange={handleSpecie}/>
+            <label htmlFor="robot">Robot</label>
+            <input type="radio" name='specie' id='cronenberg' value='cronenberg' onChange={handleSpecie}/>
+            <label htmlFor="cronenberg">Cronenberg</label>
+            <input type="radio" name='specie' id='disease' value='disease' onChange={handleSpecie}/>
+            <label htmlFor="disease">Disease</label>
+            <input type="radio" name='specie' id='unknownSpecie' value='unknown' onChange={handleSpecie}/>
             <label htmlFor="unknown">Unknown</label>
           </form>
           <li className='p-2 text-2xl text-white'>Show Gender:</li>

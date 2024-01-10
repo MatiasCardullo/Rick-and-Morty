@@ -3,11 +3,11 @@
 import { gql, useQuery } from '@apollo/client'
 import Character from './Character'
 
-const Characters = ({page,name,gender,status}) => {
+const Characters = ({page,name,gender,status,specie}) => {
 
     const charactersQuery = gql`
-    query getdata($chPage: Int ,$chName: String , $chGender: String, $chStatus: String) {
-        characters(page: $chPage,filter: { name: $chName,gender: $chGender,status: $chStatus}) {
+    query getdata($chPage: Int ,$chName: String , $chGender: String, $chStatus: String, $chSpecie: String) {
+        characters(page: $chPage,filter: { name: $chName,gender: $chGender,status: $chStatus,species: $chSpecie}) {
             info{
                 pages
             }
@@ -24,7 +24,7 @@ const Characters = ({page,name,gender,status}) => {
 
     const { loading, error, data } = useQuery(charactersQuery,{
         variables:{
-            "chPage":page , "chName":name , "chGender":gender, "chStatus":status
+            "chPage":page , "chName":name , "chGender":gender, "chStatus":status,"chSpecie":specie,
         }
     })
 
