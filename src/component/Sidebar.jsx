@@ -5,17 +5,26 @@ import SearchBar from './SearchBar';
 
 import { BsArrowLeftShort } from "react-icons/bs";
 
-const SideBar = ({setName, setStatus,setGender }) => {
+const SideBar = ({setPage,setName, setStatus,setGender }) => {
   const [open, setOpen] = useState(true)
   
   const handleStatus=(e)=>{
     setStatus(e.target.value)
+    setPage(1)
   }
   const handleGender=(e)=>{
     setGender(e.target.value)
+    setPage(1)
   }
 
   const resetAll=()=>{
+    setName("")
+    document.getElementById('searchBar').value=''
+    setStatus("")
+    document.getElementById('allStatus').checked = true;
+    setGender("")
+    document.getElementById('allGenders').checked = true;
+    setPage(1)
   }
 
   return (
@@ -24,13 +33,13 @@ const SideBar = ({setName, setStatus,setGender }) => {
         <BsArrowLeftShort className={`bg-white text-black text-3xl rounded-full absolute -right-3 top-9 border border-slate-900 cursor-pointer duration-1000 ${!open && 'rotate-180'}`} onClick={() => setOpen(!open)} />
         <img src={logo} alt="" />
         {open&&
-          <SearchBar setName={setName}/>
+          <SearchBar setPage={setPage} setName={setName}/>
         }
         {open&&
         <ul className='p-10'>
           <li className='p-2 text-2xl text-white'>Show status: </li>
           <form className='grid grid-cols-2 text-white'>
-            <input type="radio" name='status' id='all' value='' onChange={handleStatus}/>
+            <input type="radio" name='status' id='allStatus' value='' onChange={handleStatus}/>
             <label htmlFor="all">All</label>
             <input type="radio" name='status' id='alive' value='alive' onChange={handleStatus}/>
             <label htmlFor="alive">Alive</label>
@@ -41,7 +50,7 @@ const SideBar = ({setName, setStatus,setGender }) => {
           </form>
           <li className='p-2 text-2xl text-white'>Show Gender:</li>
           <form className='grid grid-cols-2  text-white'>
-            <input type="radio" name='gender' id='all' value='' onChange={handleGender}/>
+            <input type="radio" name='gender' id='allGenders' value='' onChange={handleGender}/>
             <label htmlFor="all">All</label>
             <input type="radio" name='gender' id='female' value='female' onChange={handleGender}/>
             <label htmlFor="female">Female</label>
@@ -52,6 +61,7 @@ const SideBar = ({setName, setStatus,setGender }) => {
             <input type="radio" name='gender' id='unknownGender' value='unknown' onChange={handleGender}/>
             <label htmlFor="unknown">Unknown</label>
           </form>
+          <button className='bg-white h-10 w-32 m-5 rounded-full' onClick={resetAll}/>
         </ul>
         }
       </div>

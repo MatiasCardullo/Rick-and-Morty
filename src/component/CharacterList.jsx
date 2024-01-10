@@ -14,15 +14,7 @@ const Characters = ({page,name,gender,status}) => {
             results {
                 id
                 name
-                type
                 gender
-                species
-                origin {
-                  name
-                }
-                location {
-                  name
-                }
                 image
                 status
             }
@@ -32,7 +24,7 @@ const Characters = ({page,name,gender,status}) => {
 
     const { loading, error, data } = useQuery(charactersQuery,{
         variables:{
-            "chPage":1 , "chName":name , "chGender":gender, "chStatus":status
+            "chPage":page , "chName":name , "chGender":gender, "chStatus":status
         }
     })
 

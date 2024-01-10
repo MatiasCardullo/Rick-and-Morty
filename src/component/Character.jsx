@@ -14,7 +14,6 @@ const Character = ({ character }) => {
             {character.status}
           </p>
           <div className="font-bold text-xl">{character.name} </div>
-          <p>{character.species} </p>
           <p>{character.gender} </p>
         </div>
       </div>

@@ -13,13 +13,17 @@ import { FaSearch } from "react-icons/fa"
   });
  */
 
-const SearchBar = ({setName}) => {
+const SearchBar = ({setPage, setName }) => {
+    const handleName = (e) => {
+        setName(e.target.value)
+        setPage(1)
+    }
 
     return (
         <div>
             <FaSearch />
             <input type="text" placeholder="type to search..."
-                onChange={(e) => setName(e.target.value)} />
+                id='searchBar' onChange={(e) => handleName(e)} />
         </div>
     )
 }
