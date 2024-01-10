@@ -5,10 +5,8 @@ import SearchBar from './SearchBar';
 
 import { BsArrowLeftShort } from "react-icons/bs";
 
-const SideBar = ({setStatus,setGender }) => {
+const SideBar = ({setName, setStatus,setGender }) => {
   const [open, setOpen] = useState(true)
-
-  const [search, setSearch] = useState("")
   
   const handleStatus=(e)=>{
     setStatus(e.target.value)
@@ -26,12 +24,12 @@ const SideBar = ({setStatus,setGender }) => {
         <BsArrowLeftShort className={`bg-white text-black text-3xl rounded-full absolute -right-3 top-9 border border-slate-900 cursor-pointer duration-1000 ${!open && 'rotate-180'}`} onClick={() => setOpen(!open)} />
         <img src={logo} alt="" />
         {open&&
-          <SearchBar input={search} setInput={setSearch}/>
+          <SearchBar setName={setName}/>
         }
         {open&&
         <ul className='p-10'>
           <li className='p-2 text-2xl text-white'>Show status: </li>
-          <form className='grid grid-cols-2'>
+          <form className='grid grid-cols-2 text-white'>
             <input type="radio" name='status' id='all' value='' onChange={handleStatus}/>
             <label htmlFor="all">All</label>
             <input type="radio" name='status' id='alive' value='alive' onChange={handleStatus}/>
@@ -42,7 +40,7 @@ const SideBar = ({setStatus,setGender }) => {
             <label htmlFor="unknown">Unknown</label>
           </form>
           <li className='p-2 text-2xl text-white'>Show Gender:</li>
-          <form className='grid grid-cols-2'>
+          <form className='grid grid-cols-2  text-white'>
             <input type="radio" name='gender' id='all' value='' onChange={handleGender}/>
             <label htmlFor="all">All</label>
             <input type="radio" name='gender' id='female' value='female' onChange={handleGender}/>

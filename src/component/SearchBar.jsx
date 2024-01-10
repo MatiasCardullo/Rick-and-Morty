@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 
 import { FaSearch } from "react-icons/fa"
 
@@ -12,14 +13,13 @@ import { FaSearch } from "react-icons/fa"
   });
  */
 
-const SearchBar = ({input, setInput}) => {
+const SearchBar = ({setName}) => {
 
     return (
         <div>
             <FaSearch />
-            <input type="text" value={input}
-                placeholder="type to search..."
-                onChange={(e) => setInput(e.target.value)} />
+            <input type="text" placeholder="type to search..."
+                onChange={(e) => setName(e.target.value)} />
         </div>
     )
 }

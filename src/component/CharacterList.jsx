@@ -3,11 +3,14 @@
 import { gql, useQuery } from '@apollo/client'
 import Character from './Character'
 
-const Characters = ({gender,status}) => {
+const Characters = ({page,name,gender,status}) => {
 
     const charactersQuery = gql`
-    query getdata($chName:String , $chGender: String, $chStatus: String) {
-        characters(filter: { name: $chName,gender: $chGender,status: $chStatus}) {
+    query getdata($chPage: Int ,$chName: String , $chGender: String, $chStatus: String) {
+        characters(page: $chPage,filter: { name: $chName,gender: $chGender,status: $chStatus}) {
+            info{
+                pages
+            }
             results {
                 id
                 name
@@ -29,7 +32,7 @@ const Characters = ({gender,status}) => {
 
     const { loading, error, data } = useQuery(charactersQuery,{
         variables:{
-            "chName":"" , "chGender":gender, "chStatus":status
+            "chPage":1 , "chName":name , "chGender":gender, "chStatus":status
         }
     })
 
