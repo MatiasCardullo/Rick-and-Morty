@@ -1,20 +1,18 @@
+/* eslint-disable react/prop-types */
 import { useState } from 'react';
 import logo from '../assets/Rick_and_Morty.svg'
+import SearchBar from './SearchBar';
 
 import { BsArrowLeftShort } from "react-icons/bs";
 
-const SideBar = () => {
+const SideBar = ({setStatus,setGender }) => {
   const [open, setOpen] = useState(true)
 
-  const [search, setSearch] = useState(null)
-  const handleSearch=(e)=>{
-    setSearch(e.target.value)
-  }
-  const [status, setStatus] = useState(null)
+  const [search, setSearch] = useState("")
+  
   const handleStatus=(e)=>{
     setStatus(e.target.value)
   }
-  const [gender, setGender] = useState(null)
   const handleGender=(e)=>{
     setGender(e.target.value)
   }
@@ -28,15 +26,7 @@ const SideBar = () => {
         <BsArrowLeftShort className={`bg-white text-black text-3xl rounded-full absolute -right-3 top-9 border border-slate-900 cursor-pointer duration-1000 ${!open && 'rotate-180'}`} onClick={() => setOpen(!open)} />
         <img src={logo} alt="" />
         {open&&
-        <ul className='p-10'>
-          <li className='p-2 text-2xl text-white'>Search by:</li>
-          <form className='grid grid-cols-2'>
-            <input type="radio" name='search' id='name' value='name' onChange={handleSearch}/>
-            <label htmlFor="name">Name</label>
-            <input type="radio" name='search' id='species' value='species' onChange={handleSearch}/>
-            <label htmlFor="species">Species</label>
-          </form>
-        </ul>
+          <SearchBar input={search} setInput={setSearch}/>
         }
         {open&&
         <ul className='p-10'>

@@ -1,31 +1,37 @@
-import React from 'react'
+/* eslint-disable react/prop-types */
+
 import { gql, useQuery } from '@apollo/client'
 import Character from './Character'
 
-const Characters = () => {
+const Characters = ({gender,status}) => {
 
     const charactersQuery = gql`
-        {
-            characters {
-                results {
-                    id
-                    name
-                    type
-                    gender
-                    species
-                    origin {
-                      id
-                    }
-                    location {
-                      id
-                    }
-                    image
-                    status
+    query getdata($chName:String , $chGender: String, $chStatus: String) {
+        characters(filter: { name: $chName,gender: $chGender,status: $chStatus}) {
+            results {
+                id
+                name
+                type
+                gender
+                species
+                origin {
+                  name
                 }
-            }   
-        }
+                location {
+                  name
+                }
+                image
+                status
+            }
+        }   
+    }
     `
-    const { loading, error, data } = useQuery(charactersQuery)
+
+    const { loading, error, data } = useQuery(charactersQuery,{
+        variables:{
+            "chName":"" , "chGender":gender, "chStatus":status
+        }
+    })
 
     return (
         <>
