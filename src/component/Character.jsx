@@ -4,18 +4,17 @@
 
 const Character = ({ character }) => {
   return (
-    <div className="max-w-sm w-full lg:max-w-full lg:flex">
-      <img className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal" src={character.image} alt={character.name} />
+    <div className="flex">
+      <img className="rounded-s-full object-cover h-4/5 w-4/5 border-solid border-2 border-black" src={character.image} alt={character.name} />
 
-      <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-        <div className="mb-8">
-          <p className="text-sm text-gray-600">
+      <div className="rounded-e-full bg-slate-100 h-4/5 w-4/5 text-black flex items-center justify-center border-solid border-2 border-black p-1 pr-3">
+        <div className="content-center">
+          <p className="text-sm">
             {character.status}
           </p>
-          <div className="text-gray-900 font-bold text-xl mb-2">{character.name} </div>
+          <div className="font-bold text-xl">{character.name} </div>
           <p>{character.species} </p>
           <p>{character.gender} </p>
-          <p>{character.type} </p>
         </div>
       </div>
     </div>

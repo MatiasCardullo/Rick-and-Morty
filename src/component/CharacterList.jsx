@@ -32,13 +32,15 @@ const Characters = () => {
 
             {loading && (<p>Cargando...</p>)}
             {error && (<p>Error: {error.message}</p>)}
-            <section className='grid grid-cols-3'>
+            <section className='flex justify-center pt-5'>
+
+                <div className='grid text-center justify-center grid-cols-4 gap-x-5 w-3/4'>
                 {data &&
                     data.characters.results.map(ch => (
                         <Character key={ch.id} character={ch} />
                     ))
-
                 }
+                </div>
             </section>
         </>
     )
