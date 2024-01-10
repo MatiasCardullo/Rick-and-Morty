@@ -3,7 +3,7 @@
 import { gql, useQuery } from '@apollo/client'
 import Character from './Character'
 
-const Characters = ({page,name,gender,status,specie}) => {
+const Characters = ({setCount, page,name,gender,status,specie}) => {
 
     const charactersQuery = gql`
     query getdata($chPage: Int ,$chName: String , $chGender: String, $chStatus: String, $chSpecie: String) {

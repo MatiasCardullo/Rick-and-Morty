@@ -18,7 +18,7 @@ function App() {
       {page === null ? <NoCharacters /> :
         <CharacterList setCount={setCount} setPage={setPage} page={page} name={name} status={status} specie={specie} gender={gender} />
       }
-      <Footer countPages={countPages} setPage={setPage} />
+      <Footer countPages={countPages} page={page} setPage={setPage} />
     </div>
   )
 }

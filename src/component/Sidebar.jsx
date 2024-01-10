@@ -67,7 +67,7 @@ const SideBar = ({setPage,setName, setStatus,setSpecie,setGender }) => {
             <input type="radio" name='specie' id='poopybutthole' value='poopybutthole' onChange={handleSpecie}/>
             <label htmlFor="poopybutthole">Poopybutthole</label>
             <input type="radio" name='specie' id='mythologicalCreature' value='mythological creature' onChange={handleSpecie}/>
-            <label htmlFor="mythologicalCreature">Mythological Creature</label>
+            <label htmlFor="mythologicalCreature">Myth.Creature</label>
             <input type="radio" name='specie' id='robot' value='robot' onChange={handleSpecie}/>
             <label htmlFor="robot">Robot</label>
             <input type="radio" name='specie' id='cronenberg' value='cronenberg' onChange={handleSpecie}/>
