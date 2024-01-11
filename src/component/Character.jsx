@@ -1,9 +1,7 @@
 
 /* eslint-disable react/prop-types */
-//import React from 'react'
 
 const Character = ({ character }) => {
-  
   return (
     <div className="flex">
       <img className="rounded-s-full object-cover h-4/5 w-4/5 border-solid border-2 border-black" src={character.image} alt={character.name} />

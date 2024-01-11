@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { gql, useQuery } from '@apollo/client'
 import Character from './Character'
+import Modal from "./Modal"
 
 const Characters = ({setCount, page,name,gender,status,specie}) => {
 
@@ -28,13 +29,15 @@ const Characters = ({setCount, page,name,gender,status,specie}) => {
         }
     })
 
+    const [modal, setModal] = useState(false);
+
     useEffect(() => {
         data&&setCount(data.characters.info.pages)
-        console.log("useefect")
     });
 
     return (
         <>
+        {modal&&<Modal setModal={setModal} />}
 
             {loading && (<p>Cargando...</p>)}
             {error && (<p>Error: {error.message}</p>)}
@@ -43,7 +46,7 @@ const Characters = ({setCount, page,name,gender,status,specie}) => {
                 <div className='grid text-center justify-center grid-cols-4 gap-x-5 w-3/4'>
                 {data &&
                     data.characters.results.map(ch => (
-                        <Character key={ch.id} character={ch} />
+                        <Character key={ch.id} character={ch}/>
                     ))
                 }
                 </div>
