@@ -27,6 +27,8 @@ const SideBar = ({setPage,setName, setStatus,setSpecie,setGender }) => {
     setStatus("")
     document.getElementById('allStatus').checked = true;
     setGender("")
+    document.getElementById('allSpecies').checked = true;
+    setGender("")
     document.getElementById('allGenders').checked = true;
     setPage(1)
   }
@@ -90,7 +92,7 @@ const SideBar = ({setPage,setName, setStatus,setSpecie,setGender }) => {
             <input type="radio" name='gender' id='unknownGender' value='unknown' onChange={handleGender}/>
             <label htmlFor="unknown">Unknown</label>
           </form>
-          <button className='bg-white h-10 w-32 m-5 rounded-full' onClick={resetAll}/>
+          <button className='bg-white text-black font-bold h-10 w-32 m-5 rounded-full' onClick={resetAll}>RESET ALL</button>
         </ul>
         }
       </div>

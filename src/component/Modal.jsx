@@ -14,13 +14,13 @@ export default function Modal({ ch, setCh }) {
                     <div className="flex justify-center items-center grid-cols-2 pb-7">
                         <img className="rounded-lg" src={ch.image} alt={ch.name} />
                         <div className="text-black list-none p-10">
-                            <h1>{ch.name}</h1>
-                            <p>{ch.type} </p>
-                            <p>{ch.gender} </p>
-                            <p>{ch.species} </p>
-                            <p>{ch.origin.name} </p>
-                            <p>{ch.location.name} </p>
-                            <p>{ch.status} </p>
+                            <h1 className="text-5xl p-1">{ch.name}</h1>
+                            <p className="text-2xl p-1">Gender: {ch.gender} </p>
+                            <p className="text-2xl p-1">Species: {ch.species} </p>
+                            {ch.type && <p className="text-2xl p-1">Type: {ch.type} </p>}
+                            <p className="text-2xl p-1">Origin: {ch.origin.name} </p>
+                            <p className="text-2xl p-1">Location: {ch.location.name} </p>
+                            <p className="text-2xl p-1">Status: {ch.status} </p>
                         </div>
                     </div>
                 </div>
