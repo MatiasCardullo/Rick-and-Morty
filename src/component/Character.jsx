@@ -1,9 +1,9 @@
 
 /* eslint-disable react/prop-types */
 
-const Character = ({ character }) => {
+const Character = ({ character, handleModal }) => {
   return (
-    <div className="flex">
+    <button className="flex" onClick={()=>handleModal(character)}>
       <img className="rounded-s-full object-cover h-4/5 w-4/5 border-solid border-2 border-black" src={character.image} alt={character.name} />
 
       <div className="rounded-e-full bg-slate-100 h-4/5 w-4/5 text-black flex items-center justify-center border-solid border-2 border-black p-1 pr-3">
@@ -15,7 +15,7 @@ const Character = ({ character }) => {
           <p>{character.gender} </p>
         </div>
       </div>
-    </div>
+    </button>
   )
 }
 export default Character

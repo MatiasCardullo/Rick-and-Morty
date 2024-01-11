@@ -1,31 +1,28 @@
-import { useState } from "react";
+/* eslint-disable react/prop-types */
 
-export default function Modal() {
-    const [modal, setModal] = useState(true);
+export default function Modal({ ch, setCh }) {
 
-    const toggleModal = () => {
-        setModal(!modal);
-    };
-
+    console.log(ch)
     return (
         <>
             <div className="h-screen w-screen absolute bg-slate-600 z-20 opacity-75">
 
             </div>
-            <div className="h-screen w-screen absolute z-30  flex items-center justify-center">
-                <div className="w-1/2 bg-white rounded-xl">
-                    <button className="bg-red-500 object-right-bottom" onClick={toggleModal}>
-                        CLOSE
-                    </button>
-                    <h2>Hello Modal</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
-                        perferendis suscipit officia recusandae, eveniet quaerat assumenda
-                        id fugit, dignissimos maxime non natus placeat illo iusto!
-                        Sapiente dolorum id maiores dolores? Illum pariatur possimus
-                        quaerat ipsum quos molestiae rem aspernatur dicta tenetur. Sunt
-                        placeat tempora vitae enim incidunt porro fuga ea.
-                    </p>
+            <div className="h-screen w-screen absolute z-30  flex items-center justify-center border-solid border-2 border-black">
+                <div className="w-1/2 bg-white rounded-full">
+                    <button className="bg-red-500 object-right-bottom" onClick={() => setCh(null)}> X </button>
+                    <div className="flex justify-center items-center grid-cols-2 pb-7">
+                        <img className="rounded-lg" src={ch.image} alt={ch.name} />
+                        <div className="text-black list-none p-10">
+                            <h1>{ch.name}</h1>
+                            <p>{ch.type} </p>
+                            <p>{ch.gender} </p>
+                            <p>{ch.species} </p>
+                            <p>{ch.origin.name} </p>
+                            <p>{ch.location.name} </p>
+                            <p>{ch.status} </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </>
