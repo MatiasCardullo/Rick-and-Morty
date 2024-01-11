@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-
+import { useEffect } from 'react'
 import { gql, useQuery } from '@apollo/client'
 import Character from './Character'
 
@@ -27,6 +27,11 @@ const Characters = ({setCount, page,name,gender,status,specie}) => {
             "chPage":page , "chName":name , "chGender":gender, "chStatus":status,"chSpecie":specie,
         }
     })
+
+    useEffect(() => {
+        data&&setCount(data.characters.info.pages)
+        console.log("useefect")
+    });
 
     return (
         <>
